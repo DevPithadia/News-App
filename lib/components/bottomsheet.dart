@@ -40,30 +40,35 @@ class MyBottomSheetLayout extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          BottomSheetImage(imageurl: imageurl, title: title),
-          Container(
-              padding: EdgeInsets.all(10),
-              child: modifiedText(
-                  text: description, size: 16, color: Colors.white)),
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextButton(
-              onPressed: () {
-                _launchURL(url);
-              },
-              child: Text('Read full article'),
-            ),
-          )
-        ],
-      ),
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              BottomSheetImage(imageurl: imageurl, title: title),
+              Container(
+                  padding: EdgeInsets.all(10),
+                  child: modifiedText(
+                      text: description, size: 16, color: Colors.white)),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: TextButton(
+                  onPressed: () {
+                    _launchURL(url);
+                  },
+                  child: Text('Read full article'),
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
